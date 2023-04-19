@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.19397601, g: 0.16603391, b: 0.23047875, a: 1}
+  m_IndirectSpecularColor: {r: 0.19409396, g: 0.16599731, b: 0.23047613, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -307,28 +307,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 424068559}
-  - component: {fileID: 424068558}
+  - component: {fileID: 424068560}
   m_Layer: 0
-  m_Name: Pipe Spawn
+  m_Name: Segment Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &424068558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 424068557}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0820e3c0eb97342ed997c35fbddbcdd5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pipePrefab: {fileID: 5883068137874890406, guid: 72975ef53d9f5464ba52f6eb3813a222, type: 3}
-  interval: 2
 --- !u!4 &424068559
 Transform:
   m_ObjectHideFlags: 0
@@ -344,6 +330,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &424068560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 424068557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7a541e36c6165c4ca0f31bc8714fe1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pipePrefab: {fileID: 5883068137874890406, guid: 72975ef53d9f5464ba52f6eb3813a222, type: 3}
+  treePrefab: {fileID: 9088815995411429270, guid: 51f32daa9c67cdd408224cb514d7d34a, type: 3}
+  interval: 4
+  pipeOffset: 12
+  treeOffset: 6
+  start: 12
 --- !u!1 &522086134
 GameObject:
   m_ObjectHideFlags: 0

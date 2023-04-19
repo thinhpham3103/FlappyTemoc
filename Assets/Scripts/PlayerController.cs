@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -79,8 +80,7 @@ public class PlayerController : MonoBehaviour
     
     void OnCollisionEnter(Collision c) //need to implement exit UI
     {
-        Destroy(this.gameObject);
-        Debug.Log("You loser");
+        SceneManager.LoadScene("Menu",LoadSceneMode.Single); //loads menu on death
     }
 
 

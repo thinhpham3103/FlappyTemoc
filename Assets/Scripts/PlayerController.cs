@@ -59,6 +59,18 @@ public class PlayerController : MonoBehaviour
                 moving = false;
             }
         }
+
+        if(transform.position.y < 0.5)
+        {
+            PlayerPrefs.SetInt("Score", score.getScore());
+            SceneManager.LoadScene("Menu", LoadSceneMode.Single);
+        }
+        else if(transform.position.y > 15)
+        {
+            PlayerPrefs.SetInt("Score", score.getScore());
+            SceneManager.LoadScene("Menu", LoadSceneMode.Single);
+        }
+
     }
 
     void MoveLeft()

@@ -7,7 +7,8 @@ public class PipeSpawner : MonoBehaviour
     public GameObject pipePrefab;
     public float interval;
 
-    IEnumerator spawn(){
+    IEnumerator spawn()
+    {
         for (;;)
         {   
             Instantiate(pipePrefab,new Vector3(-3,Random.Range(-8.0f,-3.0f),10),Quaternion.identity);

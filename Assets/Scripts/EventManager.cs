@@ -12,12 +12,14 @@ public class EventManager : MonoBehaviour
 
     void Awake()
     {
-        if (instance == null) {
+        if (instance == null) 
+        {
             instance = this;
             DontDestroyOnLoad(this.gameObject);
         }
         else {
-            if (instance != this){
+            if (instance != this)
+            {
                 Destroy(this.gameObject);
             }
         }
@@ -26,13 +28,16 @@ public class EventManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)){
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
             jump?.Invoke();
         }
-        if (Input.GetKeyDown(KeyCode.LeftArrow)){
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
             moveLeft?.Invoke();
         }
-        if (Input.GetKeyDown(KeyCode.RightArrow)){
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
             moveRight?.Invoke();
         }
     }

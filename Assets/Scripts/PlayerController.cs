@@ -13,6 +13,9 @@ public class PlayerController : MonoBehaviour
     float speed = 10.0f;
     bool moving = false;
     float startTime;
+    public ScoreTracker score;
+    public float ySpeed;
+    public float fallSpeed;
 
     void OnEnable() //On startup commands
     {
@@ -32,12 +35,15 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         lanePos = new float[] {-laneVal,0,laneVal};
+        score = GameObject.Find("Canvas").GetComponent<ScoreTracker>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(moving){
+
+        if (moving)
+        {
             float distCovered = (Time.time - startTime) * speed;
             // Fraction of journey completed equals current distance divided by total distance.
             float fractionOfJourney = distCovered / laneVal;
@@ -57,30 +63,63 @@ public class PlayerController : MonoBehaviour
 
     void MoveLeft()
     {
-        if (currentLane != 0){
+        if (currentLane != 0)
+        {
             startTime = Time.time;
             moving = true;
             // gameObject.transform.Translate(-laneVal,0,0);
             currentLane--;
         }
     }
+
     void MoveRight()
     {
-        if (currentLane != 2){
+        if (currentLane != 2)
+        {
             startTime = Time.time;
             moving = true;
             //gameObject.transform.Translate(laneVal,0,0);
             currentLane++;
         }
     }
+
     void Jump()
     {
         RB.AddForce(new Vector3(0,12,0),ForceMode.Impulse);
     }
-    
-    void OnCollisionEnter(Collision c) //need to implement exit UI
+
+    void OnTriggerEnter(Collider other)
     {
-        SceneManager.LoadScene("Menu",LoadSceneMode.Single); //loads menu on death
+        if (other.gameObject.tag == "obstacle")
+        {
+            Debug.Log("Touched obstacle");
+            PlayerPrefs.SetInt("Score", score.getScore());
+            SceneManager.LoadScene("Menu", LoadSceneMode.Single);
+        }
+        else if (other.gameObject.tag == "space")
+        {
+            if (!score.getScoreAdded())
+            {
+                if (other.gameObject.transform.parent.gameObject.GetComponent<PipeMovement>().status == "normal")
+                {
+                    Debug.Log("Score added");
+                    score.addScore();
+                }
+                else if (other.gameObject.transform.parent.gameObject.GetComponent<PipeMovement>().status == "reward")
+                {
+                    Debug.Log("Score added+");
+                    score.addMoretoScore();
+                }
+                else if (other.gameObject.transform.parent.gameObject.GetComponent<PipeMovement>().status == "penalty")
+                {
+                    Debug.Log("Score subtracted");
+                    score.subtractScore();
+                }
+
+                score.setScoreAdded(true);
+            }
+        }   
+
     }
 
 
